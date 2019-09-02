@@ -21,7 +21,7 @@
 </form>
 
 
-  <!-- <div id="images">
+  <div id="images">
     <button data-gif="Cry">
         Cry
         </button>
@@ -30,12 +30,28 @@
         </button>
         <button data-gif="Pout">
         Pout
-    </button> -->
+    </button>
     
  <div id="gifs-info"></div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+    // Event listener for all button elements
+    $("button").on("click", function() {
+      // In this case, the "this" keyword refers to the button that was clicked
+      var btnGif = $(this).attr("data-gif");
+      searchGifs(btnGif);
+    });
+
+    // Event listener for search
+    $("#select-gif").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the name
+    var inputGif = $("#gif-input").val().trim();
+    // Running the searchGifs function(passing in the term as an argument)
+    searchGifs(inputGif);
+    });
 
   function searchGifs(gifSearch){
       // Storing giphy API URL for a random image
@@ -74,15 +90,7 @@
     };
 
 
-    // Event listener for button
-    $("#select-gif").on("click", function(event) {
-    // Preventing the button from trying to submit the form
-    event.preventDefault();
-    // Storing the name
-    var inputGif = $("#gif-input").val().trim();
-    // Running the searchGifs function(passing in the term as an argument)
-    searchGifs(inputGif);
-    });
+  
 
 </script>
 </body>
