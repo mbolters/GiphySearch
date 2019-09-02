@@ -1,0 +1,36 @@
+button,
+div,
+form,
+input {
+  margin: 10px;
+}
+body{
+    background-image: url("emoji-wallpaper-images.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 100px;
+    font-weight: bolder;
+    text-shadow: 5px 5px white;
+    text-align: center;
+
+}
+div, form, label,input, button {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white ;
+}
+form {
+    background: rgb(255, 238, 0);
+}
+input[value] {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+}

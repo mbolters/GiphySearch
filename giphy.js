@@ -11,7 +11,9 @@ $(document).ready(function(){
         method: "GET"
       }) 
         .then(function(response) {
+
         //add attributes to all gifs for loacation, pausing, and ratings
+        
           var results = response.data;
           for (var i = 0; i < results.length; i++) {
             if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
@@ -26,28 +28,38 @@ $(document).ready(function(){
               gifDiv.append(p);
               gifDiv.append(gifImage);
               $("#gifs-info").prepend(gifDiv);
+
+        //gifs on click will pause/play
+
+              gifImage.on("click", function(){
+              if ($(this).attr("data-still") == $(this).attr("src")) {
+              $(this).attr("src", $(this).attr("data-moving"))
+              }
+              else { 
+              $(this).attr("src", $(this).attr("data-still"))
+              }
+             })
+
             }
           }   
-          //gifs on click will pause/play
-            gifImage.on("click", function(){
-                if ($(this).attr("data-still") == $(this).attr("src")) {
-                $(this).attr("src", $(this).attr("data-moving"))
-                }
-                else { 
-                $(this).attr("src", $(this).attr("data-still"))
-                }
-            })
+                   
         });  
+        
     };
 
     //clicking search
+
     $("#select-gif").on("click", function(event) {
     event.preventDefault();
     var inputGif = $("#gif-input").val().trim();
     searchGifs(inputGif);
     });
+    
+
+
     //rendering new search buttons
-      function renderButtons() {
+
+      function renderButtons(item) {  
         $("#buttons-view").empty();
         for (var i = 0; i < gifs.length; i++) {
           var a = $("<button>");
@@ -64,11 +76,13 @@ $(document).ready(function(){
         gifs.push(giphy);
         renderButtons();
       });
+
       $(document).on("click", ".gif-btn", function(event) {
         event.preventDefault();
         var btnGif = $(this).attr("data-gif");
         searchGifs(btnGif);
       });
+
       renderButtons();
     });
 
